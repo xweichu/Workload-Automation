@@ -82,6 +82,12 @@ variable mem_size {
   default = 8192
 }
 
+variable vm_firmware {
+  description = "vm firmware"
+  type = string
+  default = "efi"
+}
+
 variable disk_size {
   description = "Size of disk in GiB"
   type = number
@@ -106,6 +112,18 @@ variable network1_ips{
 variable network2_ips{
   description = "ips from network2"
   type = list(string)
+}
+
+variable network1_mask{
+  description = "network mask for network1"
+  type = number
+  default = 23
+}
+
+variable network2_mask{
+  description = "network mask for network2"
+  type = number
+  default = 23
 }
 
 
