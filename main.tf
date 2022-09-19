@@ -64,7 +64,7 @@ resource "vsphere_virtual_machine" "cassandra_vms" {
     label = "disk0"
     size = var.disk_size
   }
-  firmware = "efi"
+  firmware = var.vm_firmware
    network_interface {
     network_id  = data.vsphere_network.my_network1.id
     ovf_mapping = "eth0"
@@ -81,11 +81,11 @@ resource "vsphere_virtual_machine" "cassandra_vms" {
       }
       network_interface {
         ipv4_address = var.network1_ips[count.index]
-        ipv4_netmask = 23
+        ipv4_netmask = var.network1_mask
       }
       network_interface {
         ipv4_address = var.network2_ips[count.index]
-        ipv4_netmask = 23
+        ipv4_netmask = var.network2_mask
       }
       ipv4_gateway = var.ipv4_gateway
 
